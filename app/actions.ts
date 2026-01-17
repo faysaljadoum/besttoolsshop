@@ -3,8 +3,8 @@
 
 import { google } from "googleapis";
 
-// REMPLACEZ PAR VOTRE ID DE SHEET
-const SPREADSHEET_ID = "1jrVzqnkWlXwRycddU2H_LrvBljmo3AhiCd8yQTI3eNU"; 
+// On utilise une variable d'environnement ou on met l'ID en dur (moins propre mais ça marche)
+const SPREADSHEET_ID = "1jrVzqnkWlXwRycddU2H_LrvBljmo3AhiCd8yQTI3eNU";
 
 export async function submitOrder(formData: FormData) {
   const name = formData.get("name") as string;
@@ -15,8 +15,13 @@ export async function submitOrder(formData: FormData) {
   const date = new Date().toLocaleString("fr-MA");
 
   try {
+    
     const auth = new google.auth.GoogleAuth({
-      keyFile: "google-credentials.json",
+      credentials: {
+        client_email: process.env.GOOGLE_CLIENT_EMAIL,
+        // Astuce importante : Vercel gère parfois mal les retours à la ligne (\n) dans les variables
+        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      },
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
@@ -24,7 +29,7 @@ export async function submitOrder(formData: FormData) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: "Feuille 1!A:F", // Vérifiez le nom de l'onglet (Sheet1 ou Feuille 1)
+      range: "Feuille 1!A:F",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
@@ -33,9 +38,12 @@ export async function submitOrder(formData: FormData) {
       },
     });
 
+    console.log("Succès !");
     return { success: true, message: "تم تسجيل طلبك بنجاح!" };
+
   } catch (error) {
-    console.error("Erreur Sheet:", error);
-    return { success: false, message: "حدث خطأ أثناء الطلب" };
+    // Regardez les logs de Vercel pour voir cette erreur
+    console.error("ERREUR CRITIQUE GOOGLE SHEETS:", error);
+    return { success: false, message: "حدث خطأ أثناء تسجيل الطلب." };
   }
 }

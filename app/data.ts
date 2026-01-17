@@ -12,7 +12,7 @@ export type Product = {
   image1: string;
   image2: string;
 };
-
+ 
 export const products: Product[] = [
   {
     id: "1",
