@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                     src={product.image1}
                     alt={product.name}
                     fill
-                    className="object-cover"
+                    className="object-fit"
                   />
                 </div>
             )}
@@ -89,7 +89,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                     src={product.image2}
                     alt={product.name}
                     fill
-                    className="object-cover"
+                    className="object-fit"
                   />
                 </div>
             )}
