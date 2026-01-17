@@ -53,6 +53,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
             <OrderForm productId={product.id} />
 
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
+              ✅ مميزات المنتج
+            </h3>
+
             {/* Description 2 (si existe) */}
             {product.description1 && (
                 <div className="prose text-gray-700 leading-relaxed my-6 text-base md:text-lg whitespace-pre-line font-medium max-w-none">
@@ -75,6 +79,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             {/* Rappel Formulaire */}
             <OrderForm productId={product.id} />
 
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
+              🍽️ استخدامات متعددة
+            </h3>
+
             {/* Description 3 (si existe) */}
             {product.description2 && (
                 <div className="prose text-gray-700 leading-relaxed my-6 text-base md:text-lg whitespace-pre-line font-medium max-w-none">
@@ -93,6 +101,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                   />
                 </div>
             )}
+
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 mt-6">
+              🌟 لماذا تختار هذه الماكينة؟
+            </h3>
 
             {/* Description 4 (si existe) */}
             {product.description3 && (

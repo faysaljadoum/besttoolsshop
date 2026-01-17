@@ -34,6 +34,7 @@ export default function Home() {
                 <div className="flex justify-between items-center flex-row-reverse">
                   <span className="text-lg font-semibold text-blue-600">
                     {product.price} LYD
+                    
                   </span>
                   <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
                     التفاصيل ←

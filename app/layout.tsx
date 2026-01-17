@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 const cairo = Cairo({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
-  title: "متجرنا الإلكتروني",
+  title: "Best tools ",
   description: "أفضل المنتجات للتنظيف والمنزل",
 };
 
