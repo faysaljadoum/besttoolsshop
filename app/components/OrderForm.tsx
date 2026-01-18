@@ -69,7 +69,7 @@ export default function OrderForm({ productId }: { productId: string }) {
 
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف <span className="text-red-500">*</span></label>
-                  <input name="phone" required type="tel" dir="ltr" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50" placeholder="06 00 00 00 00" style={{ textAlign: 'right' }} />
+                  <input name="phone" required type="tel"  dir="ltr" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50" placeholder="06 00 00 00 00" style={{ textAlign: 'right' }} />
                 </div>
 
                 <div>

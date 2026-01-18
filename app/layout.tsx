@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { Analytics } from "@vercel/analytics/next"
 
 const cairo = Cairo({ subsets: ["arabic"] });
 
@@ -19,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={cairo.className}>
-        <Navbar />
-        
+        <Navbar />        
         {children}
+        <Analytics />
       </body>
     </html>
   );
