@@ -54,7 +54,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <OrderForm productId={product.id} />
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
-              ✅ مميزات المنتج
+              {product.title1}
             </h3>
 
             {/* Description 2 (si existe) */}
@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <OrderForm productId={product.id} />
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
-              🍽️ استخدامات متعددة
+              {product.title2}
             </h3>
 
             {/* Description 3 (si existe) */}
@@ -103,7 +103,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 mt-6">
-              🌟 لماذا تختار هذه الماكينة؟
+              {product.title3}
             </h3>
 
             {/* Description 4 (si existe) */}
