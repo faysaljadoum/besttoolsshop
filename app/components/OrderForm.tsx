@@ -1,11 +1,10 @@
-// components/OrderForm.tsx
 "use client";
 
 import { submitOrder } from "@/app/actions";
 import { useState } from "react";
 import { X, ShoppingCart } from "lucide-react";
 
-export default function OrderForm({ productId }: { productId: string }) {
+export default function OrderForm({ productId, price }: { productId: string, price: number }) {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
@@ -13,7 +12,18 @@ export default function OrderForm({ productId }: { productId: string }) {
     const result = await submitOrder(formData);
     if (result.success) {
       setStatus("شكراً لك! تم استلام طلبك بنجاح.");
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq('track', 'Purchase', {
+          content_name: 'Commande Produit', 
+          content_id: productId,            
+          value: price,                     
+          currency: 'LYD', 
+        });
+        
+      }
     }
+
+    
   }
 
   const toggleModal = () => {

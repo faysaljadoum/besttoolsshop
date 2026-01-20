@@ -51,7 +51,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               {product.description}
             </div>
 
-            <OrderForm productId={product.id} />
+            <OrderForm productId={product.id} price={product.price} />
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
               {product.title1}
@@ -77,7 +77,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             {/* Rappel Formulaire */}
-            <OrderForm productId={product.id} />
+            <OrderForm productId={product.id} price={product.price} />
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-6">
               {product.title2}
@@ -115,8 +115,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
             <div className="border-t border-gray-100 my-4"></div>
 
-            {/* Dernier Formulaire */}
-            <OrderForm productId={product.id} />
+           
+            <OrderForm productId={product.id} price={product.price} />
           </div>
         </div>
       </div>
