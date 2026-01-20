@@ -77,6 +77,11 @@ export default function OrderForm({ productId }: { productId: string }) {
                   <textarea name="address" required rows={3} className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50" placeholder="المدينة، الحي، رقم المنزل..." />
                 </div>
 
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-1"> الكمية<span className="text-red-500">*</span></label>
+                  <input name="quantite" required type="number" min={1}  dir="ltr" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50" placeholder="01" style={{ textAlign: 'right' }} />
+                </div>
+
                 <button type="submit" className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition duration-200 shadow-md mt-2 text-lg">
                   تأكيد الطلب الآن
                 </button>

@@ -8,7 +8,7 @@ export default function FacebookPageView() {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      ;(window as any).fbq('track', 'PageView')
+      (window as any).fbq('track', 'PageView')
     }
   }, [pathname])
 

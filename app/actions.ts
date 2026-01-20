@@ -11,6 +11,7 @@ export async function submitOrder(formData: FormData) {
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
   const address = formData.get("address") as string;
+  const quantite = formData.get("quantite") as string;
   const productId = formData.get("productId") as string;
   const date = new Date().toLocaleString("fr-MA");
 
@@ -28,11 +29,11 @@ export async function submitOrder(formData: FormData) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: "Feuille 1!A:F",
+      range: "Feuille 1!A:G",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
-          [date, productId, name, email, phone, address],
+          [date, productId, name, email, phone, address,quantite],
         ],
       },
     });
