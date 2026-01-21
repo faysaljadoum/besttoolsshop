@@ -6,11 +6,20 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
+const getYouTubeEmbedUrl = (url: string) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) 
+    ? `https://www.youtube.com/embed/${match[2]}` 
+    : null;
+};
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   const product = products.find((p) => p.id === resolvedParams.id);
 
   if (!product) return notFound();
+  const videoUrl = product.youtubeUrl ? getYouTubeEmbedUrl(product.youtubeUrl) : null;
 
   return (
     <div dir="rtl" className="min-h-screen bg-white py-6 md:py-10 px-4 font-sans text-right">
@@ -92,7 +101,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             {/* Image Secondaire 2 */}
-             {product.image1 && (
+             {product.image2 && (
   // J'ai remplacé 'aspect-video' par 'aspect-square' pour que l'image soit bien visible sur mobile
         <div className="relative w-full aspect-square md:aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm mb-8 border border-gray-200">
           <Image
@@ -116,6 +125,21 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             <div className="border-t border-gray-100 my-4"></div>
+
+            {videoUrl && (
+              <div className="mt-8 mb-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">فيديو توضيحي للمنتج:</h3>
+                <div className="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                  <iframe
+                    src={videoUrl}
+                    title={product.name}
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
 
            
             <OrderForm productId={product.id} price={product.price} />
