@@ -65,16 +65,17 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             {/* Image Secondaire 1 */}
-            {product.image1 && (
-                <div className="relative w-full aspect-video md:aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm mb-8 border border-gray-200">
-                  <Image
-                    src={product.image1}
-                    alt={product.name}
-                    fill
-                    className="object-fit"
-                  />
-                </div>
-            )}
+        {product.image1 && (
+  // J'ai remplacé 'aspect-video' par 'aspect-square' pour que l'image soit bien visible sur mobile
+        <div className="relative w-full aspect-square md:aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm mb-8 border border-gray-200">
+          <Image
+            src={product.image1}
+            alt={product.name}
+            fill
+            className="object-fit"
+          />
+        </div>
+          )}
 
             {/* Rappel Formulaire */}
             <OrderForm productId={product.id} price={product.price} />
@@ -91,16 +92,17 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             )}
 
             {/* Image Secondaire 2 */}
-            {product.image2 && (
-                <div className="relative w-full aspect-video md:aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm mb-8 border border-gray-200">
-                  <Image
-                    src={product.image2}
-                    alt={product.name}
-                    fill
-                    className="object-fit"
-                  />
-                </div>
-            )}
+             {product.image1 && (
+  // J'ai remplacé 'aspect-video' par 'aspect-square' pour que l'image soit bien visible sur mobile
+        <div className="relative w-full aspect-square md:aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-sm mb-8 border border-gray-200">
+          <Image
+            src={product.image2}
+            alt={product.name}
+            fill
+            className="object-fit"
+          />
+        </div>
+          )}
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 mt-6">
               {product.title3}
