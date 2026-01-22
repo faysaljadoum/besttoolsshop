@@ -5,7 +5,7 @@ export default function Navbar() {
       
       {/* 1. LA BARRE DU HAUT (Pour votre phrase) */}
       <div className="bg-blue-600 text-white text-center py-2 text-sm font-bold px-4">
-        <p>🚚 التوصيل مجاني لجميع المدن والدفع عند الاستلام</p>
+        <p>🚚 التوصيل لجميع المدن والدفع عند الاستلام</p>
       </div>
 
      

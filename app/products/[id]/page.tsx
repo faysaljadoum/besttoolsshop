@@ -20,7 +20,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   if (!product) return notFound();
   const videoUrl = product.youtubeUrl ? getYouTubeEmbedUrl(product.youtubeUrl) : null;
-
+  const relatedProducts = products.filter((p) => p.id !== product.id);
   return (
     <div dir="rtl" className="min-h-screen bg-white py-6 md:py-10 px-4 font-sans text-right">
       <div className="max-w-6xl mx-auto">
@@ -145,6 +145,48 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <OrderForm productId={product.id} price={product.price} />
           </div>
         </div>
+        {/* --- NOUVELLE SECTION : AUTRES PRODUITS (RESPONSIVE) --- */}
+        {relatedProducts.length > 0 && (
+          <div className="mt-16 md:mt-24 pt-8 border-t border-gray-200">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center md:text-right">
+              منتجات أخرى قد تعجبك
+            </h2>
+            
+            {/* GRID INTELLIGENTE :
+                - Mobile : 2 colonnes (grid-cols-2) avec petit écart (gap-3)
+                - Tablette : 3 colonnes (md:grid-cols-3) avec écart normal (md:gap-6)
+                - Ordi : 4 colonnes (lg:grid-cols-4)
+            */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+              {relatedProducts.map((related) => (
+                <Link 
+                  href={`/products/${related.id}`} 
+                  key={related.id}
+                  className="group block bg-white border border-gray-100 rounded-xl md:rounded-2xl overflow-hidden hover:shadow-lg transition duration-300"
+                >
+                  <div className="relative aspect-square w-full bg-gray-100">
+                    <Image
+                      src={related.image}
+                      alt={related.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                    />
+                  </div>
+                  
+                  {/* Padding réduit sur mobile (p-3) pour gagner de la place */}
+                  <div className="p-3 md:p-4">
+                    <h3 className="font-bold text-gray-800 text-xs md:text-base line-clamp-2 mb-1 md:mb-2 h-8 md:h-auto overflow-hidden">
+                      {related.name}
+                    </h3>
+                    <p className="text-blue-600 font-bold text-sm md:text-lg">
+                      {related.price.toFixed(2)} LYD
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
