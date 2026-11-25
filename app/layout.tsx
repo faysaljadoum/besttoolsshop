@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import { Analytics } from "@vercel/analytics/next"
-import Script from 'next/script'
+import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import FacebookPageView from "./components/FacebookPageView ";
 
 const cairo = Cairo({ subsets: ["arabic"] });
-const PIXEL_ID = process.env.FACEBOOK_PIXEL_ID
+const PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 
 export const metadata: Metadata = {
-  title: "Best tools ",
+  title: "THE POD ART ",
   description: "أفضل المنتجات للتنظيف والمنزل",
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={cairo.className}>
-        <Navbar />        
+        <Navbar />
         {children}
         <Analytics />
 
@@ -47,9 +47,6 @@ export default function RootLayout({
         />
 
         <FacebookPageView />
-
-
-      
       </body>
     </html>
   );

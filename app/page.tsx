@@ -8,7 +8,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 py-12 px-4" dir="rtl">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-10 text-blue-900">
-          Best tools
+          THE POD ART
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -33,8 +33,7 @@ export default function Home() {
                 </h2>
                 <div className="flex justify-between items-center flex-row-reverse">
                   <span className="text-lg font-semibold text-blue-600">
-                    {product.price} LYD
-                    
+                    {product.price} MAD
                   </span>
                   <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
                     التفاصيل ←
