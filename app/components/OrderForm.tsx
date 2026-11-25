@@ -82,7 +82,7 @@ export default function OrderForm({
                     المقاس <span className="text-red-500">*</span>
                   </label>
                   <input
-                    name="name"
+                    name="size"
                     required
                     type="text"
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50"
