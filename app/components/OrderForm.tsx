@@ -81,13 +81,19 @@ export default function OrderForm({
                   <label className="block text-sm font-bold text-gray-700 mb-1">
                     المقاس <span className="text-red-500">*</span>
                   </label>
-                  <input
+                  <select
                     name="size"
                     required
-                    type="text"
+                    defaultValue=""
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right bg-gray-50"
-                    placeholder="المقاس"
-                  />
+                  >
+                    <option value="" disabled>
+                      اختر المقاس
+                    </option>
+                    <option value="30">30</option>
+                    <option value="33">33</option>
+                    <option value="44">44</option>
+                  </select>
                 </div>
 
                 <div>
